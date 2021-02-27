@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.deployment.prefix }}
+{{- if .Values.namespace.create }}
+  namespace: {{ .Values.namespace.name }}
+{{- end }}
+spec:
+  replicas: {{ .Values.deployment.replicacount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ .Values.deployment.name }}
+      app.kubernetes.io/managed-by: "manual"
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ .Values.deployment.name }}
+        app.kubernetes.io/version: {{ .Values.deployment.version }}
+        app.kubernetes.io/managed-by: "manual"
+    spec:
+      serviceAccountName: {{ .Values.serviceAccount.name }}
+      automountServiceAccountToken: true
+      containers:
+      - name: "terraform-cloud-agent"
+        image: {{ .Values.deployment.image }}":"{{ .Values.deployment.version }}
+        command: ["/bin/tfc-agent"]
+        env:
+        - name: "TFC_AGENT_TOKEN"
+          valueFrom:
+            secretKeyRef:
+              name: tfc-agent-token
+              key: {{ .Values.deployment.tfcAgentToken }}
+        - name: "TFC_AGENT_NAME"
+          value: {{ .Values.deployment.prefix }}
+        - name: "TFC_ADDRESS"
+          value: {{ .Values.deployment.tfc_address }}
+        - name: "TFC_AGENT_LOG_LEVEL"
+          value: {{ .Values.deployment.log_level }}
+        - name: "TFC_AGENT_DISABLE_UPDATE"
+          value: {{ .Values.deployment.disable_update }}
