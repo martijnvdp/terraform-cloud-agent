@@ -11,15 +11,15 @@ deployment:
   disable_update: "true"
   tfc_address: "https://app.terraform.io"
   tfcAgentToken: ""
+  
 namespace:
-  create: true
   name: "tfc-agent"
 
 role:
   name: "terraform-cloud-agent"
 
 serviceAccount:
-  name: ""
+  name: "sa-tfc-agent"
 
 clusterrolebinding:
   name: "terraform-cloud-agent"
