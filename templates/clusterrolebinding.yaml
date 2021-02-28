@@ -2,6 +2,9 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: {{ .Values.clusterrolebinding.name }}
+  labels:
+    app.kubernetes.io/name: {{ .Values.deployment.name }}
+    app.kubernetes.io/managed-by: Helm
 subjects:
 - kind: ServiceAccount
   name: {{ .Values.serviceAccount.name }}

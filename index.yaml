@@ -3,9 +3,9 @@ entries:
   tfc-agent:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2021-02-28T14:16:09.4230203+01:00"
+    created: "2021-02-28T22:13:13.0019107+01:00"
     description: A Helm chart for terraform cloud agent deployment on Kubernetes
-    digest: 8c4733a0f0d3f665960e85ecdd41f5d2125c3bfa748863a74fe97b91dc1ef779
+    digest: 007aecf9eeca99eec264078ac2ecb18ad9dda6652fac614e29b97493735ac7fb
     home: https://github.com/martijnvdp/terraform-cloud-agent
     name: tfc-agent
     sources:
@@ -14,4 +14,4 @@ entries:
     urls:
     - https://martijnvdp.github.io/terraform-cloud-agent/tfc-agent-0.1.0.tgz
     version: 0.1.0
-generated: "2021-02-28T14:16:09.4230203+01:00"
+generated: "2021-02-28T22:13:13.000911+01:00"
