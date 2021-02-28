@@ -4,10 +4,8 @@ metadata:
   name: {{ .Values.clusterrolebinding.name }}
 subjects:
 - kind: ServiceAccount
-  name: 
-  {{- if .Values.namespace.create }}
+  name: {{ .Values.serviceAccount.name }}
   namespace: {{ .Values.namespace.name }}
-{{- end }}
 roleRef:
   kind: ClusterRole
   name: {{ .Values.role.name }}

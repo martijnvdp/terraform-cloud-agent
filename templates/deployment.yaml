@@ -2,9 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.deployment.prefix }}
-{{- if .Values.namespace.create }}
   namespace: {{ .Values.namespace.name }}
-{{- end }}
 spec:
   replicas: {{ .Values.deployment.replicacount }}
   selector:
@@ -38,3 +36,4 @@ spec:
           value: {{ .Values.deployment.log_level }}
         - name: "TFC_AGENT_DISABLE_UPDATE"
           value: {{ .Values.deployment.disable_update }}
+          
