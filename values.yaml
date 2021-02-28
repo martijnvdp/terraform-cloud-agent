@@ -1,25 +1,31 @@
 # Default values for tfc-agent.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+replicacount: 1
+
 deployment:
-  name: "terraform-cloud-agent"
-  image: "hashicorp/tfc-agent"
-  replicacount: 1
-  prefix: "tfcagent"
-  version: "latest"
-  log_level: "error" # options: TRACE, DEBUG, INFO, WARN or ERROR
+  name: terraform-cloud-agent
+  image: hashicorp/tfc-agent
+  prefix: tfcagent
+  version: latest
+  log_level: ERROR # options: TRACE, DEBUG, INFO, WARN or ERROR
   disable_update: "true"
-  tfc_address: "https://app.terraform.io"
-  tfcAgentToken: ""
+  tfc_address: https://app.terraform.io
   
 namespace:
-  name: "tfc-agent"
+  name: tfc-agent
 
 role:
-  name: "terraform-cloud-agent"
+  name: terraform-cloud-agent
 
 serviceAccount:
-  name: "sa-tfc-agent"
+  name: sa-tfc-agent
 
 clusterrolebinding:
-  name: "terraform-cloud-agent"
+  name: terraform-cloud-agent
+
+tfcAgentToken:
+  name: tfc-agent-token
+  data:
+    token: ""
+    
