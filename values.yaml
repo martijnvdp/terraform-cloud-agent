@@ -9,7 +9,7 @@ deployment:
   prefix: tfcagent
   version: latest
   log_level: ERROR # options: TRACE, DEBUG, INFO, WARN or ERROR
-  disable_update: true
+  disable_update: "true"
   tfc_address: https://app.terraform.io
   
 namespace:
